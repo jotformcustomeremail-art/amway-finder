@@ -8,62 +8,72 @@ const BORDER = "#dde1e9";
 const TEXT = "#1a1a2e";
 const MUTED = "#6b7280";
 
+// Product list checked against amway.com.au on 3 Nov 2026. URLs use the /p/<item#> short form so they survive category renames.
 const categories = [
   {
     id: "nutrition", label: "Nutrition & Supplements", icon: "🌿",
     options: ["Multivitamin / daily supplement","Omega-3 / Fish Oil","Vitamin C or D","Protein powder","Probiotics / gut health","Weight management","Kids nutrition","Athletic performance"],
     amwayProducts: [
-      { name: "Nutriway Double X Multivitamin (31-Day Refill)", match: ["Multivitamin / daily supplement","Athletic performance"], url: "https://www.amway.com.au/Categories/Shop/Health/Vitamins-&-Supplements/Everyday-Essentials/NUTRIWAY%E2%84%A2-DOUBLE-X%E2%84%A2-31-Day-Supply-Refill/p/120844" },
-      { name: "Nutriway Advanced Omega-3 (60 Softgels)", match: ["Omega-3 / Fish Oil","Athletic performance"], url: "https://www.amway.com.au/Brands/NUTRIWAY/Nutriway%E2%84%A2-Advanced-Omega-3---60-Softgel-Capsules/p/126136" },
-      { name: "Nutriway Vitamin C Plus (120 Tablets)", match: ["Vitamin C or D"], url: "https://www.amway.com.au/Categories/Shop/Health/Vitamins-&-Supplements/Cold,-Flu-&-Immunity/NUTRIWAY%E2%84%A2-Vitamin-C-Plus---120-Tablets/p/109746" },
-      { name: "XS Whey Protein — Vanilla", match: ["Protein powder","Weight management","Athletic performance"], url: "https://www.amway.com.au/Categories/Shop/Health/XS%E2%84%A2-Whey-Protein-Vanilla/p/268210" },
-      { name: "Nutriway Probiotic", match: ["Probiotics / gut health"], url: "https://www.amway.com.au/Categories/Shop/Health/Vitamins-&-Supplements/Probiotics/NUTRIWAY%E2%84%A2-Probiotic/p/120571" },
-      { name: "Nutriway Kids Daily Multivitamin (60 Chewable)", match: ["Kids nutrition"], url: "https://www.amway.com.au/Brands/NUTRIWAY/Nutriway%E2%84%A2-Kids-Daily-Multivitamin---60-Chewable-Tablets/p/123043" },
+      { name: "Nutriway Double X Multivitamin (31-Day Supply with Tray)", match: ["Multivitamin / daily supplement","Athletic performance"], url: "https://www.amway.com.au/p/120843" },
+      { name: "Nutriway Advanced Omega-3 (60 Softgels)", match: ["Omega-3 / Fish Oil","Athletic performance"], url: "https://www.amway.com.au/p/126136" },
+      { name: "Nutriway Vitamin C Plus (120 Tablets)", match: ["Vitamin C or D"], url: "https://www.amway.com.au/p/109746" },
+      { name: "Nutriway Vitamin D3 (60 Tablets)", match: ["Vitamin C or D"], url: "https://www.amway.com.au/p/295589" },
+      { name: "XS Whey Protein (Vanilla or Chocolate)", match: ["Protein powder","Weight management","Athletic performance"], url: "https://www.amway.com.au/p/268210" },
+      { name: "Nutriway All Plant Protein Powder (450g)", match: ["Protein powder"], url: "https://www.amway.com.au/p/110415" },
+      { name: "Nutriway Probiotic", match: ["Probiotics / gut health"], url: "https://www.amway.com.au/p/120571" },
+      { name: "BodyKey by Nutriway Meal Replacement Shake", match: ["Weight management"], url: "https://www.amway.com.au/p/128184" },
+      { name: "Nutriway Kids Daily Multivitamin (60 Chewable)", match: ["Kids nutrition"], url: "https://www.amway.com.au/p/123043" },
     ]
   },
   {
     id: "energy", label: "Energy & Performance", icon: "⚡",
     options: ["Energy drinks","Coffee / caffeine reliance","Pre-workout","Sports / hydration drinks","Recovery support","Mental focus"],
     amwayProducts: [
-      { name: "XS Energy Drink — Citrus Blast", match: ["Energy drinks","Coffee / caffeine reliance","Mental focus"], url: "https://www.amway.com.au/Categories/Shop/Health/Energy-&-Sports-Nutrition/Energy-Drinks/XS%E2%84%A2-Energy-Drink-Citrus-Blast/p/110699" },
-      { name: "XS Pre-Workout Boost — Melonade", match: ["Pre-workout","Mental focus"], url: "https://www.amway.com.au/Categories/Shop/Health/XS%E2%84%A2-Pre-Workout-Boost-Melonade/p/268208" },
-      { name: "XS Whey Protein — Vanilla", match: ["Recovery support","Athletic performance"], url: "https://www.amway.com.au/Categories/Shop/Health/XS%E2%84%A2-Whey-Protein-Vanilla/p/268210" },
-      { name: "XS Muscle Multiplier Essential Amino Acids", match: ["Sports / hydration drinks","Recovery support"], url: "https://www.amway.com.au/Categories/Shop/Health/Energy-&-Sports-Nutrition/Sports-Nutrition/XS%E2%84%A2-Muscle-Multiplier%E2%84%A2-Essential-Amino-Acids---Fruit-Punch/p/116400" },
+      { name: "XS Energy Drink (6 Pack)", match: ["Energy drinks","Coffee / caffeine reliance","Mental focus"], url: "https://www.amway.com.au/p/280625" },
+      { name: "XS Energise Rhodiola (60 Tablets)", match: ["Coffee / caffeine reliance","Mental focus"], url: "https://www.amway.com.au/p/101593" },
+      { name: "XS Pre-Workout Boost (Melonade)", match: ["Pre-workout","Mental focus"], url: "https://www.amway.com.au/p/268208" },
+      { name: "XS Electrolyte Plus (20 Sachets)", match: ["Sports / hydration drinks"], url: "https://www.amway.com.au/p/280658" },
+      { name: "XS Muscle Recovery (Citrus, 500g)", match: ["Recovery support"], url: "https://www.amway.com.au/p/268214" },
+      { name: "XS Muscle Multiplier (Watermelon)", match: ["Recovery support","Sports / hydration drinks"], url: "https://www.amway.com.au/p/126754" },
     ]
   },
   {
     id: "skincare", label: "Skincare & Beauty", icon: "✨",
     options: ["Moisturiser / hydration","Serum or eye cream","SPF / sun protection","Cleanser or exfoliator","Foundation / makeup","Anti-ageing","Sensitive or acne-prone skin"],
     amwayProducts: [
-      { name: "Artistry Skin Nutrition Hydrating Moisturiser", match: ["Moisturiser / hydration","Sensitive or acne-prone skin"], url: "https://www.amway.com.au/Categories/Shop/Beauty/Skincare/Moisturisers/ARTISTRY%E2%84%A2-Skin-Nutrition-Hydrating-Moisturiser/p/123464" },
-      { name: "Artistry Vitamin C + HA3 Daily Serum", match: ["Serum or eye cream","Anti-ageing"], url: "https://www.amway.com.au/Brands/ARTISTRY/Artistry%E2%84%A2-Skin-Nutrition-Vitamin-C-+-HA3-/p/125517" },
-      { name: "Artistry Intensive Skincare Anti-Wrinkle Firming Serum", match: ["Anti-ageing","Serum or eye cream"], url: "https://www.amway.com.au/Categories/Shop/Beauty/Skincare-By-Concern/Anti-Ageing/ARTISTRY%E2%84%A2-Intensive-Skincare-Anti-Wrinkle-Firming-Serum/p/109709" },
-      { name: "Artistry Skin Nutrition Balancing Cleanser", match: ["Cleanser or exfoliator","Sensitive or acne-prone skin"], url: "https://www.amway.com.au/Categories/Shop/Beauty/Skincare/Cleansers/ARTISTRY%E2%84%A2-Skin-Nutrition-Balancing-Cleanser/p/123460" },
-      { name: "Artistry Studio Skincare Cleanser + Exfoliator", match: ["Cleanser or exfoliator","Foundation / makeup"], url: "https://www.amway.com.au/Brands/ARTISTRY/Artistry-Studio%E2%84%A2-Skincare-Cleanser-+-Exfoliator/p/124812" },
-      { name: "Artistry Skin Nutrition Brightening Eye Cream", match: ["Serum or eye cream","Anti-ageing"], url: "https://www.amway.com.au/Categories/Shop/Beauty/Skincare/Eye-Treatments/ARTISTRY%E2%84%A2-Skin-Nutrition-Brightening-Eye-Cream/p/123468" },
+      { name: "Artistry Skin Nutrition Hydrating Gel Cream", match: ["Moisturiser / hydration","Sensitive or acne-prone skin"], url: "https://www.amway.com.au/p/123798" },
+      { name: "Artistry Skin Nutrition Hydrating Day Lotion SPF15", match: ["SPF / sun protection","Moisturiser / hydration"], url: "https://www.amway.com.au/p/123800" },
+      { name: "Artistry Skin Nutrition Vitamin C + HA3 Serum", match: ["Serum or eye cream","Anti-ageing"], url: "https://www.amway.com.au/p/125517" },
+      { name: "Artistry Skin Nutrition Defying Serum", match: ["Anti-ageing","Serum or eye cream"], url: "https://www.amway.com.au/p/127019" },
+      { name: "Artistry Skin Nutrition Eye Gel Cream", match: ["Serum or eye cream","Anti-ageing"], url: "https://www.amway.com.au/p/123796" },
+      { name: "Artistry Skin Nutrition Balancing Jelly Cleanser", match: ["Cleanser or exfoliator","Sensitive or acne-prone skin"], url: "https://www.amway.com.au/p/123792" },
+      { name: "Artistry Studio Skincare Cleanser + Exfoliator", match: ["Cleanser or exfoliator","Foundation / makeup"], url: "https://www.amway.com.au/p/124812" },
+      { name: "Artistry Future Glow Serum Foundation SPF30", match: ["Foundation / makeup","SPF / sun protection"], url: "https://www.amway.com.au/p/126718" },
     ]
   },
   {
     id: "personal_care", label: "Personal Care", icon: "🛁",
     options: ["Shampoo & conditioner","Body wash","Deodorant","Toothpaste & mouthwash","Hair growth or thickness","Natural / plant-based products"],
     amwayProducts: [
-      { name: "Satinique 2-in-1 Shampoo & Conditioner (750ml)", match: ["Shampoo & conditioner","Hair growth or thickness","Natural / plant-based products"], url: "https://www.amway.com.au/Brands/SATINIQUE/Satinique%E2%84%A2-2in1-Shampoo-&-Conditioner---750ml/p/126456" },
-      { name: "Satinique Colour Protect Shampoo", match: ["Shampoo & conditioner","Hair growth or thickness"], url: "https://www.amway.com.au/Categories/Shop/Beauty/Hair/Shampoo/SATINIQUE%E2%84%A2-Colour-Protect-Shampoo---750ml/p/109774" },
-      { name: "g&h Nourish+ Body Wash (1L)", match: ["Body wash","Natural / plant-based products"], url: "https://www.amway.com.au/Brands/G&H/g&h-Nourish+%E2%84%A2-Body-Wash---1L/p/125914" },
-      { name: "g&h Protect+ Deodorant Spray", match: ["Deodorant"], url: "https://www.amway.com.au/Categories/Shop/Beauty/Bath-&-Body/Deodorant/g&h-PROTECT+%E2%84%A2-Deodorant-Spray/p/109800" },
-      { name: "Glister Multi-Action Toothpaste (200g)", match: ["Toothpaste & mouthwash"], url: "https://www.amway.com.au/Brands/Glister/Glister%E2%84%A2-Multi-Action-Toothpaste---200gm/p/124106" },
-      { name: "Glister Multi-Action Mouthwash (500ml)", match: ["Toothpaste & mouthwash"], url: "https://www.amway.com.au/Brands/Glister/Glister%E2%84%A2-Multi-Action-Ready-to-Use-Mouthwash---500ml/p/124113" },
+      { name: "Satinique 2-in-1 Shampoo & Conditioner (750ml)", match: ["Shampoo & conditioner","Natural / plant-based products"], url: "https://www.amway.com.au/p/126456" },
+      { name: "Satinique Intensive Repair Shampoo (280ml)", match: ["Shampoo & conditioner"], url: "https://www.amway.com.au/p/126452" },
+      { name: "Satinique Anti Hair Fall Shampoo (280ml)", match: ["Hair growth or thickness"], url: "https://www.amway.com.au/p/126457" },
+      { name: "g&h Nourish+ Body Wash (1L)", match: ["Body wash","Natural / plant-based products"], url: "https://www.amway.com.au/p/125914" },
+      { name: "g&h Protect+ Antiperspirant Deodorant Spray (200ml)", match: ["Deodorant"], url: "https://www.amway.com.au/p/125898" },
+      { name: "Glister Multi-Action Toothpaste (200g)", match: ["Toothpaste & mouthwash"], url: "https://www.amway.com.au/p/124106" },
+      { name: "Glister Multi-Action Oral Rinse Concentrate (72ml)", match: ["Toothpaste & mouthwash"], url: "https://www.amway.com.au/p/124108" },
     ]
   },
   {
     id: "home", label: "Home & Cleaning", icon: "🏠",
     options: ["All-purpose / surface cleaner","Dishwashing liquid","Laundry detergent","Bathroom cleaner","Eco-friendly or concentrated products","Safer products around kids or pets"],
     amwayProducts: [
-      { name: "L.O.C. Multi-Purpose Cleaner (1L)", match: ["All-purpose / surface cleaner","Eco-friendly or concentrated products","Safer products around kids or pets"], url: "https://www.amway.com.au/Categories/Shop/Home/Household-Hygiene/General-Cleaning/L-O-C-%E2%84%A2-Multi-Purpose-Cleaner-1L/p/202599" },
-      { name: "L.O.C. Glass Cleaner", match: ["All-purpose / surface cleaner","Bathroom cleaner"], url: "https://www.amway.com.au/Categories/Shop/Home/Household-Hygiene/General-Cleaning/L-O-C-%E2%84%A2-Glass-Cleaner/p/202602" },
-      { name: "Dish Drops Dishwashing Liquid (1L)", match: ["Dishwashing liquid","Eco-friendly or concentrated products"], url: "https://www.amway.com.au/Categories/Shop/Home/Household-Hygiene/Kitchen/DISH-DROPS%E2%84%A2-1L/p/2249" },
-      { name: "SA8 Premium Laundry Powder (3kg)", match: ["Laundry detergent","Eco-friendly or concentrated products"], url: "https://www.amway.com.au/Brands/Amway-Home/SA8/SA8%E2%84%A2-Premium---3kg/p/116" },
-      { name: "SA8 Liquid Laundry Detergent (1L)", match: ["Laundry detergent","Safer products around kids or pets"], url: "https://www.amway.com.au/Categories/Shop/Home/SA8%E2%84%A2-Liquid-Laundry-Detergent-1L/p/103277" },
+      { name: "L.O.C. Multi-Purpose Cleaner (1L)", match: ["All-purpose / surface cleaner","Eco-friendly or concentrated products","Safer products around kids or pets"], url: "https://www.amway.com.au/p/202599" },
+      { name: "L.O.C. Bathroom Cleaner (500ml)", match: ["Bathroom cleaner"], url: "https://www.amway.com.au/p/202600" },
+      { name: "L.O.C. Glass Cleaner", match: ["All-purpose / surface cleaner"], url: "https://www.amway.com.au/p/202602" },
+      { name: "Dish Drops Dishwashing Liquid (1L)", match: ["Dishwashing liquid","Eco-friendly or concentrated products"], url: "https://www.amway.com.au/p/2249" },
+      { name: "SA8 Premium Laundry Powder (3kg)", match: ["Laundry detergent","Eco-friendly or concentrated products"], url: "https://www.amway.com.au/p/116" },
+      { name: "SA8 Liquid Laundry Detergent (1L)", match: ["Laundry detergent","Safer products around kids or pets"], url: "https://www.amway.com.au/p/103277" },
     ]
   }
 ];
@@ -185,7 +195,7 @@ export default function AmwayFinder() {
                   </div>
                   {group.products.map((p, pi) => (
                     <a key={p.name} href={p.url} target="_blank" rel="noopener noreferrer" style={S.resultRow}>
-                      <div style={S.resultNum}>{gi * 9 + pi + 1}</div>
+                      <div style={S.resultNum}>{recs.slice(0, gi).reduce((n, g) => n + g.products.length, 0) + pi + 1}</div>
                       <span style={S.resultName}>{p.name}</span>
                       <span style={S.resultLink}>View ›</span>
                     </a>
@@ -198,7 +208,7 @@ export default function AmwayFinder() {
             <div style={S.resultsFooter}>
               <span style={{ fontWeight: 700, color: NAVY }}>amway</span>
               <span style={{ color: RED, fontWeight: 700 }}>.com.au</span>
-              <span style={{ color: "#bbb", marginLeft: "auto", fontSize: 11 }}>Amway Australia Routine Finder</span>
+              <span style={{ color: "#bbb", marginLeft: "auto", fontSize: 11 }}>Product Routine Finder</span>
             </div>
           </div>
 
@@ -364,7 +374,7 @@ function Footer() {
       boxSizing: "border-box",
       flexShrink: 0,
     }}>
-      <span style={{ color: "#bbb", fontSize: 12 }}>© Amway of Australia</span>
+      <span style={{ color: "#bbb", fontSize: 12 }}>Shared by an independent Amway Business Owner</span>
       <a href="https://www.amway.com.au" target="_blank" rel="noopener noreferrer"
         style={{ color: NAVY, fontSize: 12, textDecoration: "none", fontWeight: 500 }}>
         amway.com.au ›
